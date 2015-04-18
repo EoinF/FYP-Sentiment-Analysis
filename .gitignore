@@ -4,6 +4,5 @@
 *.log
 *.tgz
 *.sh
-*.sql
 *.pyc
 /bs4
