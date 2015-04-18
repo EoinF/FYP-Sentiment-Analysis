@@ -2,10 +2,10 @@ from analyzer import loadFirstPosts, loadAllPosts, tokenizeList
 from analyzer import CLEAN_HTML, REMOVE_QUOTES, LOWERCASE, STRIP_WHITESPACE, WORDNET_ONLY, REMOVE_PUNCTUATION
 from analyzer import TOKENIZE_CUSTOM, TOKENIZE_ON_PUNC_WHITESPACE, TOKENIZE_ON_WHITESPACE
 import nltk
-import numpy as np
-import scipy
 import json
 import string
+
+#Module that outputs the time this program is running for
 import timing
 
 from nltk import metrics, stem
@@ -83,8 +83,6 @@ def loadSentiwordnet(filename):
 def getSentimentFromDataset(entryList, matches, swn):
     sentiment = {}
 
-    #Checkpoint for when pos tagger runs out of memory and crashes the program
-
     for thread_id in matches:
         sentiment[thread_id] = []
         for entry in entryList:
@@ -96,17 +94,18 @@ def getSentimentFromDataset(entryList, matches, swn):
 
                 postSentiment = []
 
-                print entry[1].content
+                #print entry[1].content
 
                 if raw_input("continue?(y/n)") != "y":
                     continue
 
-                print tokens
+                #print tokens
 
                 try:
                     #Get the POS tag for each token in the text
                     taggedtokens = stanfordtagger.tag(tokens)
                 except:    
+                    #Most likely, the pos tagger ran out of memory
                     stanfordtagger = POSTagger("../stanford-postagger-2014-08-27/models/english-bidirectional-distsim.tagger",
                         "../stanford-postagger-2014-08-27/stanford-postagger-3.4.1.jar", encoding="utf-8", java_options="-mx4000m")
                     #Try tagging again
@@ -120,7 +119,7 @@ def getSentimentFromDataset(entryList, matches, swn):
                         continue
 
                 
-                print taggedtokens
+                #print taggedtokens
 
                 #Get the sentiment from each token in the post
                 for [token, tag] in taggedtokens:
@@ -151,7 +150,7 @@ def getSentimentFromDataset(entryList, matches, swn):
                         if key in swn:
                             scores = swn[key]
                             postSentiment.append(scores)
-                            print "%s: %s = %s" % (token, pos, scores)
+                            #print "%s: %s = %s" % (token, pos, scores)
 
                 #Get the mean sentiment for this post
                 if len(postSentiment) == 0:
@@ -159,12 +158,12 @@ def getSentimentFromDataset(entryList, matches, swn):
                     print "0 matches: %s, %s" % (thread_id, entry[1].post_id)
                     print taggedtokens
                     print entry[1].content
-                else: 
+                else:
                     meanPos = sum(scores[0] for scores in postSentiment) / len(postSentiment)
                     meanNeg = sum(scores[1] for scores in postSentiment) / len(postSentiment)
                     meanObj = sum(scores[2] for scores in postSentiment) / len(postSentiment)
                 meanPostSentiment = (meanPos, meanNeg, meanObj)
-                print "mean sentiment = %s, %s, %s" % meanPostSentiment 
+                #print "mean sentiment = %s, %s, %s" % meanPostSentiment 
                 sentiment[thread_id].append(meanPostSentiment)
 
     return sentiment
