@@ -1,0 +1,9 @@
+*.csv
+*.json
+*.txt
+*.log
+*.tgz
+*.sh
+*.sql
+*.pyc
+/bs4
