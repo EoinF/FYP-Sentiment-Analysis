@@ -56,7 +56,7 @@ def main():
 Loads all the addresses from the ppr file
 return list of pairs (tr, m) 
     where:
-        a = The triple (date: address: price) as a string
+        tr = The triple (date: address: price) as a string
         m = The modified address tokens
 '''
 def loadAddresses(filename):
