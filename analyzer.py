@@ -109,7 +109,7 @@ def tokenizeList(entryList, modifierChoice=USER_CHOICE, tokenizerChoice=USER_CHO
     if (modifierChoice & WORDNET_ONLY) != 0:
         tokens = [w for w in tokens if len(wordnet.synsets(w.encode('utf-8'))) > 0]
 
-    #Remove punctuation from each tokens
+    #Remove punctuation from each token
     if (modifierChoice & REMOVE_PUNCTUATION) != 0:
         tokens = [removePunctuation(w) for w in tokens]
 
