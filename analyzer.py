@@ -152,12 +152,6 @@ def quote_filter(tag):
     else:
         return True
 
-def normalize(s):
-    clean_s = nltk.clean_html(s)
-    tokens = [w for w in nltk.wordpunct_tokenize(clean_s.lower().strip()) if w.encode('utf-8') not in string.punctuation and w.encode('utf-8') not in stopwords.words()]
-    return tokens
-
-
 def getModifierChoice():
     modifierChoice = 0 #Reset to zero modifications
 

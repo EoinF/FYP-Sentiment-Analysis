@@ -2,6 +2,9 @@ import nltk
 import json
 import string
 
+
+PPR_FOLDER = "../PPR"
+
 def main():
     #Load all the addresses from the ppr files
     print "Loading addresses from ppr csv files"
@@ -9,12 +12,12 @@ def main():
     addressList = []
    
     #Normalize all the addresses first
-    addressList.extend(loadAddresses("../PPR/PPR-2010.csv"))
-    addressList.extend(loadAddresses("../PPR/PPR-2011.csv"))
-    addressList.extend(loadAddresses("../PPR/PPR-2012.csv"))
-    addressList.extend(loadAddresses("../PPR/PPR-2013.csv"))
-    addressList.extend(loadAddresses("../PPR/PPR-2014.csv"))
-    addressList.extend(loadAddresses("../PPR/PPR-2015.csv"))
+    addressList.extend(loadAddresses(PPR_FOLDER + "/PPR-2010.csv"))
+    addressList.extend(loadAddresses(PPR_FOLDER + "/PPR-2011.csv"))
+    addressList.extend(loadAddresses(PPR_FOLDER + "/PPR-2012.csv"))
+    addressList.extend(loadAddresses(PPR_FOLDER + "/PPR-2013.csv"))
+    addressList.extend(loadAddresses(PPR_FOLDER + "/PPR-2014.csv"))
+    addressList.extend(loadAddresses(PPR_FOLDER + "/PPR-2015.csv"))
     
     addressTable = [[] for _ in range(len(addressList))]
 

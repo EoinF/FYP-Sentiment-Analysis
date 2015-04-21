@@ -19,12 +19,12 @@ def main():
 
     results = {}
 
-    #Find all matching addresses within e
+    #Find all matching addresses within the entry
     for entry in entryList:
         content = (entry[0].title + entry[1].content).decode("ascii", "ignore")
         content = " ".join(normalize(content))
         for i in range(len(addressLookup)):
-            #Check all permutations of this address against the entry e
+            #Check all permutations of this address against the entry
             for permutation in addressLookup[i]:
                 if permutation in content:
                     if (entry[0].thread_id in results.keys()):

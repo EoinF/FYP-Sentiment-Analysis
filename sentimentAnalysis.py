@@ -72,7 +72,8 @@ def loadSentiwordnet(filename):
     #using the rank to weight each score
     for key in allScores:
         synsetSum = sum([i[2] for i in allScores[key]])
-        #scores[0] / scores[2] == sentiment / rank
+
+        #scores[0] / scores[2] = sentiment / rank
         posMean = sum(scores[0] / scores[2] for scores in allScores[key]) / synsetSum
         negMean = sum(scores[1] /scores[2] for scores in allScores[key]) / synsetSum
         objMean = 1 - (posMean + negMean)
