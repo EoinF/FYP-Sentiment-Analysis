@@ -1,4 +1,4 @@
-from analyzer import loadFirstPosts, loadTimeRange, loadAllPosts, tokenize, tokenizeList
+from analyzer import loadFirstPosts, loadAllPosts, tokenizeList
 from analyzer import CLEAN_HTML, REMOVE_QUOTES, LOWERCASE, STRIP_WHITESPACE, WORDNET_ONLY, REMOVE_PUNCTUATION
 from analyzer import TOKENIZE_CUSTOM, TOKENIZE_ON_PUNC_WHITESPACE, TOKENIZE_ON_WHITESPACE
 import nltk

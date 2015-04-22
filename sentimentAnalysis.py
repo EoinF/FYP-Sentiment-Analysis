@@ -97,8 +97,8 @@ def getSentimentFromDataset(entryList, matches, swn):
 
                 #print entry[1].content
 
-                if raw_input("continue?(y/n)") != "y":
-                    continue
+                #if raw_input("continue?(y/n)") != "y":
+                #    continue
 
                 #print tokens
 

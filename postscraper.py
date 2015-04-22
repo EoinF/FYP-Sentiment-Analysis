@@ -128,12 +128,12 @@ def getPostEntries(get_params):
 
 
 def retrieveAllPosts(thread_id, startoffset):
-'''
-Returns True if all posts were retrieved
-Returns False if gone past the final updated thread
-thread_id = the thread to scrape posts from
-startoffset = the offset in the thread from which to start scraping posts
-'''
+    '''
+    Returns True if all posts were retrieved
+    Returns False if gone past the final updated thread
+    thread_id = the thread to scrape posts from
+    startoffset = the offset in the thread from which to start scraping posts
+    '''
     get_params = copy.deepcopy(DEFAULT_POSTS_PARAMS)
     get_params["t"] = thread_id
 
